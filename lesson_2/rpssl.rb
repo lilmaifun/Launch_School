@@ -2,6 +2,7 @@ VALID_CHOICES = %w(rock paper scissors lizard spock).freeze
 SHORTEN_CHOICES = %w(r p s l).freeze
 player_score = 0
 computer_score = 0
+
 game_key = {
   'rock' => ['scissors', 'lizard'],
   'paper' => ['rock', 'spock'],
@@ -73,12 +74,14 @@ loop do
 
   display_results(choice, computer_choice)
 
+#score keeper
   if win?(choice, computer_choice)
     player_score += 1
-  elsif win?(computer_score, choice)
+  elsif choice == computer_choice
+  else
     computer_score += 1
   end
-  
+
   prompt("Your score: #{player_score}; Computer's score: #{computer_score}")
 
   if player_score == 5
