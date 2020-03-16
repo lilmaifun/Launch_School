@@ -174,7 +174,7 @@ def play_next_round
   answer = gets.chomp
 end
 
-# actual game loop
+# -----------------------------actual game loop-----------------------------
 loop do
   scores = Hash.new(0)
 
