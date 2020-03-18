@@ -1,3 +1,5 @@
+require 'pry'
+
 class SumOfMultiples
   def initialize(*multiples)
     @multiples = multiples
@@ -9,16 +11,19 @@ class SumOfMultiples
 
   def to(limit)
     result = []
-    (0..limit).each do |num|
-      result << num if multiples_of_factor?(num)
+    (0..limit-1).each do |number|
+      result << number if multiples_of_factor?(number)
     end
+    p result
     result.reduce(&:+)
   end
 
-  def multiples_of_factor?(num)
+  def multiples_of_factor?(number)
     @multiples.each do |n|
-      return true if num % n == 0
+      return true if number % n == 0
     end
     false
   end
 end
+
+puts SumOfMultiples.to(20)
