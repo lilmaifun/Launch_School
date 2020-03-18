@@ -30,7 +30,7 @@ class Anagram
     results = []
     list.each do |el|
       next if el.size != @word.size
-      results << el if anagram?(el)
+      results << el if anagram?(el) unless @word.downcase == el.downcase
     end
     results
   end
@@ -38,9 +38,9 @@ class Anagram
   private
 
   def anagram?(word)
-    @word.chars.sort == word.chars.sort
+    @word.downcase.chars.sort == word.downcase.chars.sort
   end
 end
 
-test = Anagram.new('listen')
-p test.match(["enlists", "google", "inlets", "banana"])
+test = Anagram.new('corn')
+p test.match(%w(corn dark Corn rank CORN cron park))
